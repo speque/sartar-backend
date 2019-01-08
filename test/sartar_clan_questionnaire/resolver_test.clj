@@ -16,7 +16,8 @@
    :virtue_modifiers {}
    :specials ["Slogan: 'Violence is always an option'"
               "+3 when calling Orlanth for divination"]
-   :ancient_enemy "None"})
+   :ancient_enemy "None"
+   :new_enemy "None"})
 
 (facts "about `resolver`"
   (fact "it checks answers and returns rune and resource checks"

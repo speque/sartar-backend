@@ -1,0 +1,75 @@
+{
+  :enums {
+    :rune {
+      :values [:darkness
+               :water
+               :earth
+               :fire
+               :air
+               :stasis
+               :movement
+               :life
+               :death
+               :truth
+               :illusion
+               :harmony
+               :disorder
+               :plant
+               :beast
+               :man
+               :spirit
+               :chaos
+               :dragonewt
+               :mastery
+               :magicR
+               :infinity
+               :communication
+               :eternal_battle
+               :law
+               :luck]
+    }
+    :input_meaning {
+      :values [:wyter_ability :wyter_weakness]
+    }
+  }
+  :objects {
+    :Question {
+      :description "Questionnaire question"
+      :fields {
+        :title {
+          :description "Question title"
+          :type (non-null String)
+        }
+        :description {:type (non-null String)}
+        :query {:type (non-null String)}
+        :notes {:type (non-null String)}
+        :disabled_by {:type (list Int)}
+        :options {:type (list :Option)}
+        :input {:type Input}
+      }
+    }
+    :Input {
+      :description "Text field"
+      :fields {
+        :title {:type (non-null String)}
+        :meaning {:type :input_meaning}
+      }
+    }
+    :Option {
+      :fields {
+        :title {:type (non-null String)}
+        :rune {:type :rune}
+        :disabled_by {:type (list Int)}
+        :explanation {:type String}
+      }
+    }
+  }
+  :queries {
+    :questions {
+      :type (list :Question)
+      :description "Questions matching optional filter"
+      :args {:titleLike {:type String}}
+      :resolve :query/questions
+    }
+  }
+}

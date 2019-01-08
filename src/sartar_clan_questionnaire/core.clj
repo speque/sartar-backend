@@ -1,23 +1,42 @@
 (ns sartar-clan-questionnaire.core
-  (:require [compojure.core :refer :all]
+  (:require [clojure.edn :as edn]
+            [clojure.java.io :as io]
+            [com.walmartlabs.lacinia :refer [execute]]
+            [com.walmartlabs.lacinia.util :refer [attach-resolvers]]
+            [com.walmartlabs.lacinia.schema :as schema]
+            [compojure.core :refer :all]
             [compojure.route :as route]
             [orchestra.spec.test :as ost]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
             [ring.middleware.cors :refer [wrap-cors]]
             [ring.logger :as logger]
             [ring.util.response :refer [response]]
-            [sartar-clan-questionnaire.questions :refer [questions]]
+            [sartar-clan-questionnaire.questions :refer [questions filtered-questions]]
             [sartar-clan-questionnaire.resolver :refer [resolve-questionnaire]]))
 
+(def questionnaire-schema
+  (-> (io/resource "graphql_schema.edn")
+      slurp
+      edn/read-string
+      (attach-resolvers {:query/questions filtered-questions})
+      schema/compile))
+
 (defroutes app-routes
+  (POST "/graphql" request
+    (response
+      (let [query (get-in request [:body :query])]
+        (execute questionnaire-schema query nil nil))))
+
   (GET "/" []
     (response {:questions (map (fn [question]
       (-> question
           (assoc :options (map #(select-keys % [:title :rune]) (:options question)))
           (dissoc :tag))
     ) questions)}))
+
   (POST "/" request
     (response (resolve-questionnaire questions (get-in request [:body :answers]))))
+
   (route/not-found "Not Found"))
 
 (def app

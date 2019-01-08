@@ -58,6 +58,9 @@
           {}
           picked-modifiers))
 
+(defn- tag-index [tag questions]
+  (first (keep-indexed #(when (= tag (:tag %2)) %1) questions)))
+
 (defn resolve-questionnaire [questions answers]
   (let [picked (picked-answers questions answers)
         all-modifiers (map :modifiers picked)
@@ -65,13 +68,17 @@
         resource-modifiers (map #(select-keys % resources) all-modifiers)
         virtue-modifiers (map #(select-keys % virtues) all-modifiers)
         specials (map :special picked)
-        ancient-enemy-question-index (first (keep-indexed #(when (= :ancient-enemy (:tag %2)) %1) questions))]
+        ancient-enemy-question-index (tag-index :ancient-enemy questions)
+        new-enemy-question-index (tag-index :new-enemy questions)]
     {:rune_modifiers (count-modifiers rune-modifiers)
      :resource_modifiers (count-modifiers resource-modifiers)
      :virtue_modifiers (count-modifiers virtue-modifiers)
      :specials (remove nil? specials)
      :ancient_enemy (if (and ancient-enemy-question-index (< ancient-enemy-question-index (count picked)))
                         (:title (nth picked ancient-enemy-question-index))
+                        "None")
+     :new_enemy (if (and new-enemy-question-index (< new-enemy-question-index (count picked)))
+                        (:title (nth picked new-enemy-question-index))
                         "None")
      }))
 
@@ -98,14 +105,21 @@
 (s/def ::special string?)
 (s/def ::specials (s/coll-of ::special))
 
+(s/def ::explanation string?)
+
 (s/def ::ancient_enemy string?)
 
 (s/def ::option (s/keys :req-un [::title ::modifiers]
-                        :opt-un [::rune ::special]))
+                        :opt-un [::rune ::special ::disabled_by ::explanation]))
 (s/def ::options (s/coll-of ::option))
 
-(def tags #{:ancient-enemy})
+(def tags #{:ancient-enemy :new-enemy})
 (s/def ::tag (s/with-gen tags #(s/gen tags)))
+
+(def input-meanings #{:wyter_ability :wyter_weakness})
+(s/def ::wyter (s/with-gen input-meanings #(s/gen input-meanings)))
+(s/def ::input (s/keys :req-un [::title]
+                       :opt-un [::meaning]))
 
 (s/def ::disabled_by (s/coll-of integer?))
 (s/def ::question (s/keys :req-un [::title ::options]
