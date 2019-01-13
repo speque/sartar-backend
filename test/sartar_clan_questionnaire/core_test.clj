@@ -15,5 +15,5 @@
     (let [response (app (->
                           (mock/request :post "/")
                           (mock/content-type "application/json")
-                          (mock/body (json/generate-string {:answers [1 0 1 0 0]}))))]
+                          (mock/body (json/generate-string {:answers [1 0 1 0 0] :inputs [nil nil nil nil nil]}))))]
       (:status response) => 200)))

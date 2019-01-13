@@ -61,7 +61,7 @@
 (defn- tag-index [tag questions]
   (first (keep-indexed #(when (= tag (:tag %2)) %1) questions)))
 
-(defn resolve-questionnaire [questions answers]
+(defn resolve-questionnaire [questions answers inputs]
   (let [picked (picked-answers questions answers)
         all-modifiers (map :modifiers picked)
         rune-modifiers (map #(select-keys % runes) all-modifiers)
@@ -69,7 +69,8 @@
         virtue-modifiers (map #(select-keys % virtues) all-modifiers)
         specials (map :special picked)
         ancient-enemy-question-index (tag-index :ancient-enemy questions)
-        new-enemy-question-index (tag-index :new-enemy questions)]
+        new-enemy-question-index (tag-index :new-enemy questions)
+        wyter-abilities (map :text (filter #(= (:meaning %) "wyter_ability") inputs))]
     {:rune_modifiers (count-modifiers rune-modifiers)
      :resource_modifiers (count-modifiers resource-modifiers)
      :virtue_modifiers (count-modifiers virtue-modifiers)
@@ -80,7 +81,7 @@
      :new_enemy (if (and new-enemy-question-index (< new-enemy-question-index (count picked)))
                         (:title (nth picked new-enemy-question-index))
                         "None")
-     }))
+     :wyter_abilities wyter-abilities}))
 
 ;; Specs:
 
@@ -118,8 +119,7 @@
 
 (def input-meanings #{:wyter_ability :wyter_weakness})
 (s/def ::wyter (s/with-gen input-meanings #(s/gen input-meanings)))
-(s/def ::input (s/keys :req-un [::title]
-                       :opt-un [::meaning]))
+(s/def ::input (s/keys :opt-un [::title ::meaning ::text]))
 
 (s/def ::disabled_by (s/coll-of integer?))
 (s/def ::question (s/keys :req-un [::title ::options]
@@ -141,5 +141,6 @@
 (s/fdef resolve-questionnaire
     :args (s/cat
       :questions (s/coll-of ::question)
-      :answer-indices (s/coll-of integer?))
+      :answer-indices (s/coll-of integer?)
+      :inputs (s/coll-of (s/nilable ::input)))
     :ret ::result)

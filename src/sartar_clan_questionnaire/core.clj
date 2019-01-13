@@ -30,12 +30,13 @@
   (GET "/" []
     (response {:questions (map (fn [question]
       (-> question
-          (assoc :options (map #(select-keys % [:title :rune]) (:options question)))
+          (assoc :options (map #(select-keys % [:title :rune :explanation]) (:options question)))
           (dissoc :tag))
     ) questions)}))
 
   (POST "/" request
-    (response (resolve-questionnaire questions (get-in request [:body :answers]))))
+    (let [{:keys [answers inputs]} (:body request)]
+      (response (resolve-questionnaire questions answers inputs))))
 
   (route/not-found "Not Found"))
 
@@ -43,7 +44,7 @@
   (->
     (wrap-json-response app-routes)
     (wrap-json-body {:keywords? true})
-    (wrap-cors :access-control-allow-origin [(re-pattern "http://localhost:3000")]
+    (wrap-cors :access-control-allow-origin [(re-pattern "http://localhost:\\d+")]
                :access-control-allow-methods [:options :post :get]
                :access-control-allow-headers ["Content-Type"])
     logger/wrap-with-logger))
