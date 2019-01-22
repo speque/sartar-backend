@@ -192,7 +192,7 @@
         {:title "Heler, the Rain-bringing God." :modifiers {}}
         {:title "Elmal, the Suffering Sun." :modifiers {} :explanation "None. We retained worship of the Living Deity, who is:"}
         {:title "Kolat, the Spirit Wind." :modifiers {}}
-        {:title "Storm Bull, the Mindless Storm." :modifiers {}}
+        {:title "Storm Bull, the Mindless Storm." :modifiers {:eternal_battle 3}}
         {:title "Humakt, the Lord of Death." :modifiers {}}
         {:title "Yinkin, the Alynx God." :modifiers {}}
         {:title "Lady of the Wild." :modifiers {}}

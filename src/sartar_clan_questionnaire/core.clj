@@ -1,6 +1,7 @@
 (ns sartar-clan-questionnaire.core
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
+            [clojure.walk :refer [postwalk]]
             [com.walmartlabs.lacinia :refer [execute]]
             [com.walmartlabs.lacinia.util :refer [attach-resolvers]]
             [com.walmartlabs.lacinia.schema :as schema]
@@ -14,6 +15,11 @@
             [sartar-clan-questionnaire.questions :refer [questions filtered-questions]]
             [sartar-clan-questionnaire.resolver :refer [resolve-questionnaire]]))
 
+(defn- dashes-in-kws->_
+  [m]
+  (let [f (fn [[k v]] (if (keyword? k) [(clojure.string/replace (name k) "-" "_") v] [k v]))]
+    (postwalk (fn [x] (if (map? x) (into {} (map f x)) x)) m)))
+
 (def questionnaire-schema
   (-> (io/resource "graphql_schema.edn")
       slurp
@@ -24,29 +30,28 @@
 (defroutes app-routes
   (POST "/graphql" request
     (response
-      (let [query (get-in request [:body :query])]
-        (execute questionnaire-schema query nil nil))))
+     (let [query (get-in request [:body :query])]
+       (execute questionnaire-schema query nil nil))))
 
   (GET "/" []
     (response {:questions (map (fn [question]
-      (-> question
-          (assoc :options (map #(select-keys % [:title :rune :explanation]) (:options question)))
-          (dissoc :tag))
-    ) questions)}))
+                                 (-> question
+                                     (assoc :options (map #(select-keys % [:title :rune :explanation]) (:options question)))
+                                     (dissoc :tag))) questions)}))
 
   (POST "/" request
     (let [{:keys [answers inputs]} (:body request)]
-      (response (resolve-questionnaire questions answers inputs))))
+      (response (dashes-in-kws->_ (resolve-questionnaire questions answers inputs)))))
 
   (route/not-found "Not Found"))
 
 (def app
   (->
-    (wrap-json-response app-routes)
-    (wrap-json-body {:keywords? true})
-    (wrap-cors :access-control-allow-origin [(re-pattern "http://localhost:\\d+")]
-               :access-control-allow-methods [:options :post :get]
-               :access-control-allow-headers ["Content-Type"])
-    logger/wrap-with-logger))
+   (wrap-json-response app-routes)
+   (wrap-json-body {:keywords? true})
+   (wrap-cors :access-control-allow-origin [(re-pattern "http://localhost:\\d+")]
+              :access-control-allow-methods [:options :post :get]
+              :access-control-allow-headers ["Content-Type"])
+   logger/wrap-with-logger))
 
 (ost/instrument)

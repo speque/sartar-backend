@@ -41,10 +41,16 @@
 
 (def virtues #{:shrewd})
 
-(defn- picked-answers [questions answer-indices]
+(def tags #{:ancient-enemy
+            :new-enemy})
+
+(def input-meanings #{:wyter_ability
+                      :wyter_weakness})
+
+(defn- pick-answers [questions answer-indices]
   (map (fn [q a]
        (if (> a -1)
-          (nth (:options q) a)
+          (assoc (nth (:options q) a) :tag (:tag q))
           {:title "Not relevant" :modifiers {}}))
      questions answer-indices))
 
@@ -61,27 +67,29 @@
 (defn- tag-index [tag questions]
   (first (keep-indexed #(when (= tag (:tag %2)) %1) questions)))
 
-(defn resolve-questionnaire [questions answers inputs]
-  (let [picked (picked-answers questions answers)
+(defn- gather-tagged-answers [answers-with-tags]
+  (reduce
+   (fn [acc val]
+     (assoc acc val (some #(when (= (:tag %) val) (:title %)) answers-with-tags)))
+   {}
+   (vec tags)))
+
+(defn resolve-questionnaire [questions answer-indices inputs]
+  (let [picked (pick-answers questions answer-indices)
         all-modifiers (map :modifiers picked)
         rune-modifiers (map #(select-keys % runes) all-modifiers)
         resource-modifiers (map #(select-keys % resources) all-modifiers)
         virtue-modifiers (map #(select-keys % virtues) all-modifiers)
         specials (map :special picked)
-        ancient-enemy-question-index (tag-index :ancient-enemy questions)
-        new-enemy-question-index (tag-index :new-enemy questions)
-        wyter-abilities (map :text (filter #(= (:meaning %) "wyter_ability") inputs))]
-    {:rune_modifiers (count-modifiers rune-modifiers)
-     :resource_modifiers (count-modifiers resource-modifiers)
-     :virtue_modifiers (count-modifiers virtue-modifiers)
-     :specials (remove nil? specials)
-     :ancient_enemy (if (and ancient-enemy-question-index (< ancient-enemy-question-index (count picked)))
-                        (:title (nth picked ancient-enemy-question-index))
-                        "None")
-     :new_enemy (if (and new-enemy-question-index (< new-enemy-question-index (count picked)))
-                        (:title (nth picked new-enemy-question-index))
-                        "None")
-     :wyter_abilities wyter-abilities}))
+        wyter-abilities (map :text (filter #(= (:meaning %) "wyter_ability") inputs))
+        tagged-answers (gather-tagged-answers picked)]
+    (merge
+     tagged-answers
+     {:rune-modifiers (count-modifiers rune-modifiers)
+      :resource-modifiers (count-modifiers resource-modifiers)
+      :virtue-modifiers (count-modifiers virtue-modifiers)
+      :specials (remove nil? specials)
+      :wyter-abilities wyter-abilities})))
 
 ;; Specs:
 
@@ -90,13 +98,13 @@
 (s/def ::query string?)
 
 (s/def ::rune (s/with-gen runes #(s/gen runes)))
-(s/def ::rune_modifiers (s/map-of ::rune integer?))
+(s/def ::rune-modifiers (s/map-of ::rune integer?))
 
 (s/def ::resource (s/with-gen resources #(s/gen resources)))
-(s/def ::resource_modifiers (s/map-of ::resource integer?))
+(s/def ::resource-modifiers (s/map-of ::resource integer?))
 
 (s/def ::virtue (s/with-gen virtues #(s/gen virtues)))
-(s/def ::virtue_modifiers (s/map-of ::virtue integer?))
+(s/def ::virtue-modifiers (s/map-of ::virtue integer?))
 
 (s/def ::modifiers (s/map-of (s/or
                                 :rune ::rune
@@ -108,25 +116,24 @@
 
 (s/def ::explanation string?)
 
-(s/def ::ancient_enemy string?)
+(s/def ::ancient-enemy (s/nilable string?))
+(s/def ::new-enemy (s/nilable string?))
 
 (s/def ::option (s/keys :req-un [::title ::modifiers]
-                        :opt-un [::rune ::special ::disabled_by ::explanation]))
+                        :opt-un [::rune ::special ::disabled-by ::explanation]))
 (s/def ::options (s/coll-of ::option))
 
-(def tags #{:ancient-enemy :new-enemy})
 (s/def ::tag (s/with-gen tags #(s/gen tags)))
 
-(def input-meanings #{:wyter_ability :wyter_weakness})
 (s/def ::wyter (s/with-gen input-meanings #(s/gen input-meanings)))
 (s/def ::input (s/keys :opt-un [::title ::meaning ::text]))
 
-(s/def ::disabled_by (s/coll-of integer?))
+(s/def ::disabled-by (s/coll-of integer?))
 (s/def ::question (s/keys :req-un [::title ::options]
-                          :opt-un [::description ::query ::disabled_by ::tag]))
+                          :opt-un [::description ::query ::disabled-by ::tag]))
 
-(s/def ::result (s/keys :req-un [::rune_modifiers ::resource_modifiers ::virtue_modifiers]
-                        :opt-un [::specials ::ancient_enemy]))
+(s/def ::result (s/keys :req-un [::rune-modifiers ::resource-modifiers ::virtue-modifiers]
+                        :opt-un [::specials ::ancient-enemy ::new-enemy]))
 
 (s/fdef picked-answers
     :args (s/cat
