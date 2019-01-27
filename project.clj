@@ -6,14 +6,14 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/spec.alpha "0.2.176"]
                  [compojure "1.6.1"]
-                 [ring-cors "0.1.12"]
+                 [ring-cors "0.1.13"]
                  [ring-logger "1.0.1"]
                  [ring/ring-json "0.4.0"]
                  [orchestra "2018.12.06-2"]
                  [com.walmartlabs/lacinia "0.31.0"]]
   :target-path "target/%s"
   :profiles {
-    :dev {:dependencies [[midje "1.9.5"]
+    :dev {:dependencies [[midje "1.9.6"]
                          [ring/ring-mock "0.3.2"]
                          [org.clojure/test.check "0.9.0"]]}
     :uberjar {:aot :all}
