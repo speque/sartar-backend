@@ -27,7 +27,8 @@
                        :communication
                        :eternal_battle
                        :law
-                       :luck})
+                       :luck
+                       :yinkin})
 (def runes (set/union elemental-runes
                       power-runes
                       form-runes
@@ -39,7 +40,11 @@
                  :magic
                  :peace})
 
-(def virtues #{:shrewd})
+(def virtues #{:cautious
+               :ambitious
+               :courage
+               :rebellious
+               :shrewd})
 
 (def tags #{:ancient-enemy
             :new-enemy})
