@@ -9,8 +9,8 @@
                  [ring-cors "0.1.13"]
                  [ring-logger "1.0.1"]
                  [ring/ring-json "0.4.0"]
-                 [orchestra "2018.12.06-2"]
-                 [com.walmartlabs/lacinia "0.31.0"]]
+                 [orchestra "2019.02.06-1"]
+                 [com.walmartlabs/lacinia "0.32.0"]]
   :target-path "target/%s"
   :profiles {
     :dev {:dependencies [[midje "1.9.6"]
