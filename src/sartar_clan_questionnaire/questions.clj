@@ -152,45 +152,46 @@
               {:title "We belonged to the Penentelli, the tribe of the Winter Daughter, Penene, and her husband Kastwall Five. We lived in the highlands of the lands now called Aggar." :modifiers {:war 1} :special "Your ancestral heroes are Penene Winter and Kastwall Five. Your clan knows how to **Hunt** as a clan ability."}
               {:title "We belonged to the Infithtelli, the tribe of one of the Summer Daughters, Infithe and her husband Porscriptor the Cannibal. We lived in the land now called Tarsh." :modifiers {:truth 1 :peace 1} :special "Your ancestral heroes are Infithe Summer and Proscriptor the Cannibal. Your clan has the ability to make a **Terrifying Shout** as a clan ability."}
               {:title "We belonged to Berenethtelli, the tribe of the Red-Haired Winter Daughter Redaylde and her horse-loving husband Bereneth the Rider. We lived in the north, in the land now called Saird." :modifiers {:movement 1 :war 1} :special "Your ancestral heroes are Bereneth the Rider and Red-Haired Redaylde. You clan has **Horsemanship** as a clan ability and **Hates Dara Happans**, an ancient foe in the Darkness."}
-              {:title "We joined the Liornvuli, named for Liorn the Young, star husband of Deleen daughter of King Kodig, the eldest son of Vingkot. We lived in the land now called Tarsh." :modifiers {} :explanation "We joined one of the tribes that were formed out of the remains of those destroyed during the Gods War. We followed a great hero who came down from the heavens and who provided us with flickering light during the Darkness:"}
-              {:title "We joined the Forosilvuli, named for Forosil Ferocious, star husband of Ornore Korolsdottir. We lived in the land now called Tarsh." :modifiers {}}
-              {:title "We joined the Stravuli, named for Stravul, the great hero who defended Dragon Pass in the Darkness. We lived in the lands now called Tarsh." :modifiers {}}
-              {:title "We joined the Garanvuli, named for Garan, star lover of Serias, who defeated the Chaos Army and saved his lover at Whitewall. We lived in the lands now called Heortland." :modifiers {}}
-              {:title "We joined the Sedenorvuli, named for Sedenor who descended to save his clan from Chaos. We lived in the land just north of the Shadow Plateau and feuded with the Koroltes until we were forced to move to the far north to a land now called Talastar." :modifiers {}}] ;; TODO separate questions to two groups
+              {:title "We joined the Liornvuli, named for Liorn the Young, star husband of Deleen daughter of King Kodig, the eldest son of Vingkot. We lived in the land now called Tarsh." :modifiers {:magic 1} :special "Your ancestral hero is Liorn the Young. Your clan wyter has the ability to **Summon a Shooting Star**." :explanation "We joined one of the tribes that were formed out of the remains of those destroyed during the Gods War. We followed a great hero who came down from the heavens and who provided us with flickering light during the Darkness:"}
+              {:title "We joined the Forosilvuli, named for Forosil Ferocious, star husband of Ornore Korolsdottir. We lived in the land now called Tarsh." :modifiers {:wealth 1} :special "Your ancestral hero is Foronsil Ferocious. Your clan wyter has the ability to **Bless Cattle**."}
+              {:title "We joined the Stravuli, named for Stravul, the great hero who defended Dragon Pass in the Darkness. We lived in the lands now called Tarsh." :modifiers {:magic 1} :special "Your ancestral hero is Stravul the Mighty. Your wyter has the ability to **Know Enemy's Weakness.**"}
+              {:title "We joined the Garanvuli, named for Garan, star lover of Serias, who defeated the Chaos Army and saved his lover at Whitewall. We lived in the lands now called Heortland." :modifiers {:war 1} :special "Your ancestral heroes are Garan the Low Star and Serias. Your wyter has the ability to **Fight Agains Chaos**."}
+              {:title "We joined the Sedenorvuli, named for Sedenor who descended to save his clan from Chaos. We lived in the land just north of the Shadow Plateau and feuded with the Koroltes until we were forced to move to the far north to a land now called Talastar." :modifiers {:morale 1} :special "Your ancestral hero is Sedenor. Your wyter has the ability to **Fight Against Chaos**."}]
     }
    {:title "16. The Era of Time"
     :query "What deity did your clan help awaken?"
     :description "While the rest of society worked to protect, feed, and just survive, the First Priests worked to re-establish links with the ancient deities. A new harmony between people and deities was made and the world was slowly improved. The gods returned from the Underworld with the First Dawn. Time and history began."
-    :options [{:title "Our ancestors, we did not need more." :modifiers {} :explanation "None."}
-              {:title "Ernalda, the Mother Goddess." :modifiers {} :explanation "We woke:"}
-              {:title "Orlanth, the AllFather." :modifiers {}}
-              {:title "Lhankor Mhy, the Knowing God." :modifiers {}}
-              {:title "Issaries, the Talking God." :modifiers {}}
-              {:title "Chalana Arroy, the Healing Goddess." :modifiers {}}
-              {:title "Heler, the Rain-bringing God." :modifiers {}}
-              {:title "Elmal, the Suffering Sun." :modifiers {} :explanation "None. We retained worship of the Living Deity, who is:"}
-              {:title "Kolat, the Spirit Wind." :modifiers {}}
-              {:title "Storm Bull, the Mindless Storm." :modifiers {:eternal_battle 3}}
-              {:title "Humakt, the Lord of Death." :modifiers {}}
-              {:title "Yinkin, the Alynx God." :modifiers {}}
-              {:title "Lady of the Wild." :modifiers {}}
-              {:title "Odayla, the Hunting God." :modifiers {}}
-              {:title "Argan Argar, the Speaker in Darkness." :modifiers {}}]}
+    ;; TODO tag question to avoid repeating (shrine, ancestor)
+    :options [{:title "Our ancestors, we did not need more." :modifiers {:man 1} :special "Your clan has a strong connection and a shrine to our ancestors." :explanation "None."}
+              {:title "Ernalda, the Mother Goddess." :modifiers {:earth 1} :special "Your clan has a strong connection and a shrine to Ernalda, the Mother Goddess." :explanation "We woke:"}
+              {:title "Orlanth, the Allfather." :modifiers {:air 1} :special "Your clan has a strong connection and a shrine to Orlanth, the Allfather."}
+              {:title "Lhankor Mhy, the Knowing God." :modifiers {:truth 1} :special "Your clan has a strong connection and a shrine to Lhankor Mhy, the Knowing God."}
+              {:title "Issaries, the Talking God." :modifiers {:communication 1} :special "Your clan has a strong connection and a shrine to Issaries, the Talking God."}
+              {:title "Chalana Arroy, the Healing Goddess." :modifiers {:harmony 1} :special "Your clan has a strong connection and a shrine to Chalana Arroy, the Healing Goddess."}
+              {:title "Heler, the Rain-bringing God." :modifiers {:water 1} :special "Your clan has a strong connection and a shrine to Heler, the Rain-bringing God."}
+              {:title "Elmal, the Suffering Sun." :modifiers {:fire 1} :special "Your clan has a strong connection and a shrine to Elmal, the Suffering Sun." :explanation "None. We retained worship of the Living Deity, who is:"}
+              {:title "Kolat, the Spirit Wind." :modifiers {:spirit 1} :special "Your clan has a strong connection and a shrine to Kolat, the Spirit Wind."}
+              {:title "Storm Bull, the Mindless Storm." :modifiers {:eternal_battle 1} :special "Your clan has a strong connection and a shrine to Storm Bull, the Mindless Storm."}
+              {:title "Humakt, the Lord of Death." :modifiers {:death 1} :special "Your clan has a strong connection and a shrine to Humakt, the Lord of Death."}
+              {:title "Yinkin, the Alynx God." :modifiers {:yinkin 1} :special "Your clan has a strong connection and a shrine to Yinkin, the Alynx God."}
+              {:title "Lady of the Wild." :modifiers {:beast 1} :special "Your clan has a strong connection and a shrine to Lady of the Wild."}
+              {:title "Odayla, the Hunting God." :modifiers {:beast 1} :special "Your clan has a strong connection and a shrine to Odayla, the Hunting God."}
+              {:title "Argan Argar, the Speaker in Darkness." :modifiers {:darkness 1} :special "Your clan has a strong connection and a shrine to Argan Argar, the Speaker in Darkness."}]}
    {:title "17. Lokamayadon"
     :query "How did your clan resist Lokamayadon?"
     :description "Orlanth always encouraged personal ambition. No one thought there could be too much personal advancement until a priest named Lokamayadon took upon himself the powers of High Storm. He tried to replace Orlanth, peacefully at first and then by killing all who worshipped the God.\n\n Many people went along with him because he was powerful, but most Orlanthi resisted, though it cost them greatly. Now everyone hates \"Lokomoko,\" who was revealed as a Chaos god."
-    :options [{:title "Fought ceaselessly, no matter how many of us were killed." :modifiers {}}
-              {:title "Fought the High Storm people when it was safe to do so." :modifiers {}}
-              {:title "Pretended to go along with High Storm, and waited for a good time to rebel." :modifiers {}}
-              {:title "We could not help ourselves; we were forced to follow him." :modifiers {}}
-              {:title "We followed Lokomo because we did not know it was wrong." :modifiers {}}]}
+    :options [{:title "Fought ceaselessly, no matter how many of us were killed." :modifiers {:war 1 :courage 1 :rebellious 1}}
+              {:title "Fought the High Storm people when it was safe to do so." :modifiers {:morale 1 :cautious 1 :rebellious 1}}
+              {:title "Pretended to go along with High Storm, and waited for a good time to rebel." :modifiers {:wealth 1 :shrewd 1}}
+              {:title "We could not help ourselves; we were forced to follow him." :modifiers {:peace 1}}
+              {:title "We followed Lokomo because we did not know it was wrong." :modifiers {:magic 1 :ambitious 1}}]}
    {:title "18. Arkat the Liberator"
     :query "18.1 What did your clan do when Arkat came?"
     :description "Lokamayadon helped create a new god called Gbaji, which brought Chaos back. It would have destroyed the world except that the great hero Harmast Barefoot performed the Lightbringers Quest and brought back the destroyer of Gbaji."
-    :options [{:title "Raised all our forces to fight." :modifiers {}}
-              {:title "Sent as many men as we could spare, but no more." :modifiers {}}
-              {:title "Waited to see what would happen, then helped when we were sure he would win." :modifiers {}}
-              {:title "Neither helped nor hindered." :modifiers {}}]}
+    :options [{:title "Raised all our forces to fight." :modifiers {:war 1 :rebellious 1 :courage 1}}
+              {:title "Sent as many men as we could spare, but no more." :modifiers {:morale 1 :courage 1 :shrewd 1}}
+              {:title "Waited to see what would happen, then helped when we were sure he would win." :modifiers {:wealth 1 :ambitious 1}}
+              {:title "Neither helped nor hindered." :modifiers {:peace 1 :cautious 1}}]}
    {:title "18. Arkat the Traitor"
     :query "18.2 How do you feel about Arkat's betrayal?"
     :description "Arkat was the destroyer. He was a man who had lived before, a sorcerous demon in the shape of a man, or maybe just a trickster. Arkat helped everyone, then betrayed them. He deserted his army when it fought Dara Happa and he finally even left Harmast in the clutches of his worst foe, so that he could betray the whole human race and become a troll. Everyone hates Arkat, even though he destroyed Gbaji and saved the world. It does not matter what fate your clan suffered at his hands, they suffered, but survived, and that is all anyone needs to remember."
