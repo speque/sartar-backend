@@ -13,10 +13,12 @@
                  [com.walmartlabs/lacinia "0.32.0"]]
   :target-path "target/%s"
   :profiles {
-    :dev {:dependencies [[metosin/testit "0.3.0"]
-                         [ring/ring-mock "0.3.2"]]}
-    :uberjar {:aot :all}
-  }
+              :dev {:dependencies [[metosin/testit "0.3.0"]
+                                   [ring/ring-mock "0.3.2"]]}
+              :uberjar {:aot :all}
+              :kaocha {:dependencies [[lambdaisland/kaocha "0.0-389"]]}
+            }
   :plugins [[lein-ring "0.9.7"]
             [lein-cljfmt "0.6.0"]]
+  :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]}
   :ring {:handler sartar-clan-questionnaire.core/app})
