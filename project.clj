@@ -20,5 +20,5 @@
   }
   :plugins [[lein-ring "0.9.7"]
             [lein-cljfmt "0.6.0"]
-            [ring/ring-mock "0.3.2"]]
+            [lein-midje "3.2.1"]]
   :ring {:handler sartar-clan-questionnaire.core/app})
