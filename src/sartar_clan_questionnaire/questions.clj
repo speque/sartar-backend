@@ -331,5 +331,4 @@
 
 (defn filtered-questions [context args value]
   (let [{:keys [titleLike]} args]
-    (->> questions
-         (filter #(or (nil? titleLike) (.contains (:title %) titleLike))))))
+    (filter #(or (nil? titleLike) (.contains (:title %) titleLike)) questions)))

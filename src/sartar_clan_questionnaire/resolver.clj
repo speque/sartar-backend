@@ -62,7 +62,7 @@
 (defn- count-modifiers [picked-modifiers]
   (reduce (fn [result modifier-map]
             (reduce (fn [modded [key val]]
-                      (let [old-val (or (key modded) 0)]
+                      (let [old-val (or (get modded key) 0)]
                         (assoc modded key (+ old-val val))))
                     result
                     modifier-map))

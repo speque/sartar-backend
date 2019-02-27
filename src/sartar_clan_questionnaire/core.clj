@@ -1,6 +1,7 @@
 (ns sartar-clan-questionnaire.core
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
+            [clojure.string :as s]
             [clojure.walk :refer [postwalk]]
             [com.walmartlabs.lacinia :refer [execute]]
             [com.walmartlabs.lacinia.util :refer [attach-resolvers]]
@@ -17,8 +18,15 @@
 
 (defn- dashes-in-kws->_
   [m]
-  (let [f (fn [[k v]] (if (keyword? k) [(clojure.string/replace (name k) "-" "_") v] [k v]))]
-    (postwalk (fn [x] (if (map? x) (into {} (map f x)) x)) m)))
+  (let [f (fn [[k v]]
+            (if (keyword? k)
+              [(s/replace (name k) "-" "_") v]
+              [k v]))]
+    (postwalk (fn [x]
+                (if (map? x)
+                  (into {} (map f x))
+                  x))
+              m)))
 
 (def questionnaire-schema
   (-> (io/resource "graphql_schema.edn")
