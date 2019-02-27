@@ -13,12 +13,10 @@
                  [com.walmartlabs/lacinia "0.32.0"]]
   :target-path "target/%s"
   :profiles {
-    :dev {:dependencies [[midje "1.9.6"]
-                         [ring/ring-mock "0.3.2"]
-                         [org.clojure/test.check "0.9.0"]]}
+    :dev {:dependencies [[metosin/testit "0.3.0"]
+                         [ring/ring-mock "0.3.2"]]}
     :uberjar {:aot :all}
   }
   :plugins [[lein-ring "0.9.7"]
-            [lein-cljfmt "0.6.0"]
-            [lein-midje "3.2.1"]]
+            [lein-cljfmt "0.6.0"]]
   :ring {:handler sartar-clan-questionnaire.core/app})

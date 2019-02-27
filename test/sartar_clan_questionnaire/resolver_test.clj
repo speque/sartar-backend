@@ -1,6 +1,7 @@
 (ns sartar-clan-questionnaire.resolver-test
-  (:use midje.sweet)
-  (:require [sartar-clan-questionnaire.resolver :as resolver]
+  (:require [clojure.test :refer :all]
+            [testit.core :refer :all]
+            [sartar-clan-questionnaire.resolver :as resolver]
             [sartar-clan-questionnaire.questions :as questions]))
 
 (def answers [1 0 1 0 0])
@@ -21,6 +22,6 @@
    :new-enemy nil
    :wyter-abilities ["Wyter ability"]})
 
-(facts "about `resolver`"
+(deftest test-resolver
   (fact "it checks answers and returns rune and resource checks"
     (resolver/resolve-questionnaire questions/questions answers inputs) => expectedResults))
