@@ -29,7 +29,7 @@
                :luck]
     }
     :input_meaning {
-      :values [:wyter_ability :wyter_weakness]
+      :values [:wyter_ability :wyter_weakness :heroquest_secret]
     }
   }
   :objects {
