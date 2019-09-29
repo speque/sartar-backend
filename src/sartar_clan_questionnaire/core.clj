@@ -44,7 +44,7 @@
   (GET "/" []
     (response {:questions (map (fn [question]
                                  (-> question
-                                     (assoc :options (map #(select-keys % [:title :rune :explanation]) (:options question)))
+                                     (assoc :options (map #(select-keys % [:title :rune :explanation :disabled_by]) (:options question)))
                                      (dissoc :tag))) questions)}))
 
   (POST "/" request
