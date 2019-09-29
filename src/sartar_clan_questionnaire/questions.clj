@@ -133,7 +133,11 @@
               {:title "We strapped the bones of our dead fathers on our feet, and escaped from the monsters by skating on the ice." :modifiers {:morale 1}}
               {:title "We dug a hole in the ground and huddled inside, kept alive by the warmth of our sleeping kinsmen." :modifiers {:wealth 1}}
               {:title "A star captain fell screaming from the sky, and his light led us safely through the Darkness." :modifiers {:magic 1}}]}
-      ;; TODO  13. I Fought We Won
+   {:title "13. I Fought We Won"
+    :query ""
+    :description "The entire world was on the brink of destruction, and it came down to one person to resist Wakboth the Devil. That person did, and so the world was saved. You learned in the initiation rites of your people that you were that individual. Heort the King is the one who teaches you this, and so you are called one of the Heortling peoples."
+    :options []
+    :input {:title "OPTIONAL: Give your clan a Gods War Heroquest secret. This secret likely relates to your history so far and, ideally, should be an \"ambiguous reference\"." :meaning :heroquest_secret}}
    {:title "14. The Unity Council"
     :query "Which allies were most important to you?"
     :description "King Heort guided your people out of the Great Darkness. He reinstituted sacrifice to the gods, organized the peoples into clans, gave out the new laws for society, and arranged the first new tribe. In his honor, you became Heortlings. He also arranged alliances with all the nearby Elder Races and formed the Unity Council. For the first time ever, humans and the elder races worked cooperatively. During this time of peace and cooperation, your ancestors made many unexpected allies."
