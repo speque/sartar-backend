@@ -47,17 +47,17 @@
    {:title "6. Your Earliest Famous Event "
     :query "Your earliest Famous Event was:"
     :description "You fought in the many wars that Orlanth undertook to conquer the world. These wars helped shape the world. Other more peaceful deeds shaped the world as well."
-    :options [{:title "Battle of the Trembling Shore. Where Orlanth and his army raged against the salty gods of the sea, and drove them like froth in a storm." :modifiers {:air 1 :morale 1}}
-              {:title "Battle of Extinguish Field. Orlanth met Yelm face to face in open battle, and Orlanth killed Yelm and scattered his army." :modifiers {:air 1 :war 1}}
-              {:title "The Thrinbarri Battles. Where Orlanth and his army fought against the sky warriors." :modifiers {:air 1 :wealth 1}}
-              {:title "The First Dragonslaying. Where Orlanth killed Sh'harkazeel the Mover of Heavens and took his Dragon Power." :modifiers {:air 1 :magic 1}}
-              {:title "The Plundering of Aron. Where Orlanth and his army defeated Seravus the Enchanter and recaptured the Beasts." :modifiers {:air 1 :war 1}}
-              {:title "Onetree Exchange. Where Issaries showed Orlanth how to honorably challenge and exchange secrets with Genert." :modifiers {:peace 1 :communication 1}} ;; TODO check this
-              {:title "Roitina's Purification. Where Roitina showed mortals how to live in harmony with the gods." :modifiers {:earth 1 :magic 1}}
-              {:title "The Ox-Taming. When Barntar tamed the Bull and harnessed oxen to the plow." :modifiers {:earth 1 :wealth 1}}
-              {:title "The Fate-Weaving. When Ernalda first revealed the Tapestry of Destiny and the fate of the gods." :modifiers {:earth 1 :magic 1}}
-              {:title "The Pot-Making. When Pella the Pottery Goddess first made a pot to store grain in." :modifiers {:earth 1 :wealth 1}}
-              {:title "The First Fire Day. When Ernalda tamed the Lowfires and put them to work for the women. " :modifiers {:earth 1 :peace 1}}]}
+    :options [{:title "**Battle of the Trembling Shore**. Where Orlanth and his army raged against the salty gods of the sea, and drove them like froth in a storm." :modifiers {:air 1 :morale 1}}
+              {:title "**Battle of Extinguish Field**. Orlanth met Yelm face to face in open battle, and Orlanth killed Yelm and scattered his army." :modifiers {:air 1 :war 1}}
+              {:title "**The Thrinbarri Battles**. Where Orlanth and his army fought against the sky warriors." :modifiers {:air 1 :wealth 1}}
+              {:title "**The First Dragonslaying**. Where Orlanth killed Sh'harkazeel the Mover of Heavens and took his Dragon Power." :modifiers {:air 1 :magic 1}}
+              {:title "**The Plundering of Aron**. Where Orlanth and his army defeated Seravus the Enchanter and recaptured the Beasts." :modifiers {:air 1 :war 1}}
+              {:title "**Onetree Exchange**. Where Issaries showed Orlanth how to honorably challenge and exchange secrets with Genert." :modifiers {:peace 1 :communication 1}} ;; TODO check this
+              {:title "**Roitina's Purification**. Where Roitina showed mortals how to live in harmony with the gods." :modifiers {:earth 1 :magic 1}}
+              {:title "**The Ox-Taming**. When Barntar tamed the Bull and harnessed oxen to the plow." :modifiers {:earth 1 :wealth 1}}
+              {:title "**The Fate-Weaving**. When Ernalda first revealed the Tapestry of Destiny and the fate of the gods." :modifiers {:earth 1 :magic 1}}
+              {:title "**The Pot-Making**. When Pella the Pottery Goddess first made a pot to store grain in." :modifiers {:earth 1 :wealth 1}}
+              {:title "**The First Fire Day**. When Ernalda tamed the Lowfires and put them to work for the women. " :modifiers {:earth 1 :peace 1}}]}
    {:title "7. Marriage of Orlanth and Ernalda "
     :query "Which side did your ancestors stand on?"
     :description "Orlanth wooed the forces of Earth and after many tribulations, adventures, and discoveries the storm god proved himself worthy of marrying Great Ernalda, the Earth Queen. The two of them created the Marriage Oath and thereby established a great harmony in the world through this sacred bonding.\n\n You, a loyal member of Orlanth's army, were there at the wedding. When you went into the ceremony, you were asked which side you wished to stand on: the right (Air) or left (Earth) side."
@@ -67,15 +67,15 @@
    {:title "8. The Vingkotling Age"
     :query "8.1 Which remnant people joined you?"
     :description "Vingkot was a son of Orlanth and the first great king of the Orlanthi people. The Vingkotlings were great, with full baskets and fat herds and always victorious over their foes. The people set up many altars where the gods lived and so established the relations of worship. King Vingkot led and sent many expeditions against the enemies who wanted to take it away. Vingkot is still worshipped for the great deeds he did, and for his leadership of the gods when Orlanth went away.\n\n Vingkot married the Summer and Winter Wives and with them he had five sons and five daughters. The bloodline of Vingkot was unique and was necessary to be a king. Each son and daughter founded a Vingkotling tribe, except for the Second Son, who traveled to the edge of the world. Vingkot chose his eldest son Kodig to be the high king of all the Vingkotlings and his son's bloodline, called the Kodigvari, were the Royal Tribe of the Vingkotlings.\n\n When the world fell apart, Vingkot welcomed refugees and reorganized the devastated clans, so that all might survive. He asked you to shelter the people of a ruined clan, but let you choose what status to give them."
-    :options [{:title "Buf Gart, the \"Hungry Women\"." :modifiers {:darkness 2 :peace 2}}
-              {:title "Ched Durkel, the \"Strings\"." :modifiers {:fire 2 :peace 1}}
-              {:title "Jars Antanggi, the \"People of the Shadows\"." :modifiers {:darkness 3 :magic 1}}
-              {:title "Karantuel, the \"Cloud Folk\"."  :modifiers {:water 3 :war 1}}
-              {:title "Korsto Viv, the \"People of the Rivers\"." :modifiers {:water 2 :wealth 1}}
-              {:title "Nalda Bin, the \"Stick Farmers\"." :modifiers {:earth 2 :wealth 1}}
-              {:title "Aranto Viv, the \"Axe People\"." :modifiers {:earth 3 :war 1}}
-              {:title "Eryain Ins, \"The Blondes\"." :modifiers {:fire 3 :morale 1} :special "Your clan members often have blond hair."}
-              {:title "Forosto Jann, the \"Deadly Archers\"." :modifiers {:fire 2 :war 1}}]}
+    :options [{:title "**Buf Gart**, the \"Hungry Women\"." :modifiers {:darkness 2 :peace 2}}
+              {:title "**Ched Durkel**, the \"Strings\"." :modifiers {:fire 2 :peace 1}}
+              {:title "**Jars Antanggi**, the \"People of the Shadows\"." :modifiers {:darkness 3 :magic 1}}
+              {:title "**Karantuel**, the \"Cloud Folk\"."  :modifiers {:water 3 :war 1}}
+              {:title "**Korsto Viv**, the \"People of the Rivers\"." :modifiers {:water 2 :wealth 1}}
+              {:title "**Nalda Bin**, the \"Stick Farmers\"." :modifiers {:earth 2 :wealth 1}}
+              {:title "**Aranto Viv**, the \"Axe People\"." :modifiers {:earth 3 :war 1}}
+              {:title "**Eryain Ins**, \"The Blondes\"." :modifiers {:fire 3 :morale 1} :special "Your clan members often have blond hair."}
+              {:title "**Forosto Jann**, the \"Deadly Archers\"." :modifiers {:fire 2 :war 1}}]}
    {:title "8. The Vingkotling Age"
     :query "8.2 What status did you give the refugees?"
     :description "You had the choice whether to make them into thralls (slaves) or adopt them into your clan."
@@ -86,16 +86,16 @@
     :query "Who is your clan's Ancient Enemy?"
     :description "The foes of the Vingkotlings were many. As time went on, you found yourself fighting against the same foes over and over again. One enemy in particular plagued your people consistently during the era. Your ancestors fought these foes so often that they developed special magic to combat them.\n\n Even today, your clan does not get along with the descendants of the Ancient Enemy, and your wyter is especially effective against them."
     :tag :ancient-enemy
-    :options [{:title "Venebain the Lightfore, leader of the Fire Tribe, heirs to the Evil Empire." :modifiers {:war 1}}
-              {:title "The Dragonewts, the dire dragon people." :modifiers {:magic 1}}
-              {:title "Mostali and the Stone Tribe, made up of the change-hating dwarves." :modifiers {:peace 1}}
-              {:title "Chinkis Mor the Elf Warlord, who grew his forests across our plowlands." :modifiers {:wealth 1}}
-              {:title "Ves Venna son of Valind, who fought his own kin without honor." :modifiers {:peace 1}}
-              {:title "Jagrekriand the Red God, who broke Umath and hated Orlanth's people. " :modifiers {:magic 1}}
-              {:title "Tada the Green, Lord of Prax " :modifiers {:morale 1}}
-              {:title "Zzabur the Atheist, who tried to kill Orlanth with sorcery. " :modifiers {:magic 1}}
-              {:title "Narga the Bad Dog, who hated Yinkin and the Vingkotlings. " :modifiers {:magic 1} :special "Your clan descents from Yinkin."}
-              {:title "Deloradella, Queen of the Dark Tribe, the hungry eaters that ate everything in the wilds." :modifiers {:war 1}}]};; TODO disable in 14
+    :options [{:title "**Venebain the Lightfore**, leader of the Fire Tribe, heirs to the Evil Empire." :modifiers {:war 1}}
+              {:title "**The Dragonewts**, the dire dragon people." :modifiers {:magic 1}}
+              {:title "**Mostali and the Stone Tribe**, made up of the change-hating dwarves." :modifiers {:peace 1}}
+              {:title "**Chinkis Mor the Elf Warlord**, who grew his forests across our plowlands." :modifiers {:wealth 1}}
+              {:title "**Ves Venna son of Valind**, who fought his own kin without honor." :modifiers {:peace 1}}
+              {:title "**Jagrekriand the Red God**, who broke Umath and hated Orlanth's people. " :modifiers {:magic 1}}
+              {:title "**Tada the Green**, Lord of Prax " :modifiers {:morale 1}}
+              {:title "**Zzabur the Atheist**, who tried to kill Orlanth with sorcery. " :modifiers {:magic 1}}
+              {:title "**Narga the Bad Dog**, who hated Yinkin and the Vingkotlings. " :modifiers {:magic 1} :special "Your clan descents from Yinkin."}
+              {:title "**Deloradella**, Queen of the Dark Tribe, the hungry eaters that ate everything in the wilds." :modifiers {:war 1}}]};; TODO disable in 14
    {:title "10. The Great Darkness"
     :query "Which disaster nearly exterminated your folk?"
     :description "Eventually, the Great Darkness descended on Glorantha. Many gods died, others slept, and even Orlanth abandoned his people to try to save the world. Everything in the universe seemed hostile, and was at least uncaring. You saw many die and many strangers joined the surviving clans. The adoption rites were made at this time, and used extensively so that everyone could survive."
@@ -203,9 +203,9 @@
    {:title "19. The Empire of Wyrms Friends"
     :query "What was your attitude towards the dragons?"
     :description "During the Second Age, a dragon approached you, in either its own form or that of a human with the soul of a dragon. The dragons had always been hostile, or at the very best utterly uncaring, but now it offered to share knowledge with you. Orlanth has always been the dragon-slayer, but many priests of other clans embraced these new ways and formed the EWF, the Empire of Wyrms Friends. Your clan did not, or you would not be here now."
-    :options [{:title "Hostile, we fought against them." :modifiers {}}
-              {:title "Negative, we resisted them, for we would never believe a dragon." :modifiers {}}
-              {:title "Suspicious, we did not go along." :modifiers {}}]}
+    :options [{:title "**Hostile**, we fought against them." :modifiers {}}
+              {:title "**Negative**, we resisted them, for we would never believe a dragon." :modifiers {}}
+              {:title "**Suspicious**, we did not go along." :modifiers {}}]}
    {:title "20. The Dragonkill War"
     :query "What lesson did your clan draw from the Dragonkill?"
     :description "The EWF was corrupted by the dragons and finally destroyed when the dragonewts killed its leaders.\n\n Afterwards, several great armies invaded Dragon Pass from the north, east, and south. After decades of warfare, hundreds of dragons (including the great dragons) appeared, some as big as the sky, and ate every human being they found, hostile or otherwise. A few incredibly lucky people survived, said to number only ten humans. Any hatred people had for the dragons was replaced by unconquerable fear."
