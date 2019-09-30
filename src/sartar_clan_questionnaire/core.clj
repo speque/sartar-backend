@@ -6,7 +6,7 @@
             [com.walmartlabs.lacinia :refer [execute]]
             [com.walmartlabs.lacinia.util :refer [attach-resolvers]]
             [com.walmartlabs.lacinia.schema :as schema]
-            [compojure.core :refer :all]
+            [compojure.core :refer [GET POST] :as c]
             [compojure.route :as route]
             [orchestra.spec.test :as ost]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
@@ -35,7 +35,7 @@
       (attach-resolvers {:query/questions filtered-questions})
       schema/compile))
 
-(defroutes app-routes
+(c/defroutes app-routes
   (POST "/graphql" request
     (response
      (let [query (get-in request [:body :query])]
