@@ -333,6 +333,6 @@
     :options [{:title "Yes." :modifiers {}}
               {:title "No." :modifiers {}}]}])
 
-(defn filtered-questions [context args value]
+(defn filtered-questions [_ args _]
   (let [{:keys [titleLike]} args]
     (filter #(or (nil? titleLike) (.contains (:title %) titleLike)) questions)))
