@@ -36,10 +36,10 @@
       schema/compile))
 
 (c/defroutes app-routes
-  (POST "/graphql" request
+
+  (POST "/graphql" {{:keys [query]} :body}
     (response
-     (let [query (get-in request [:body :query])]
-       (execute questionnaire-schema query nil nil))))
+     (execute questionnaire-schema query nil nil)))
 
   (GET "/" []
     (response {:questions (map (fn [question]
