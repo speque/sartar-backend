@@ -54,7 +54,7 @@
 
 (defn- pick-answers [questions answer-indices]
   (map (fn [q a]
-       (if (> a -1)
+       (if (and (> a -1) (> (count (:options q)) a))
           (assoc (nth (:options q) a) :tag (:tag q))
           {:title "Not relevant" :modifiers {}}))
      questions answer-indices))
