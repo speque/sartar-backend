@@ -18,7 +18,8 @@
               :uberjar {:aot :all}
               :kaocha {:dependencies [[lambdaisland/kaocha "0.0-565"]]}
             }
-  :plugins [[lein-ring "0.9.7"]
-            [lein-cljfmt "0.6.0"]]
+  :plugins [[lein-ring "0.12.5"]
+            [lein-cljfmt "0.6.0"]
+            [lein-ancient "0.6.15"]]
   :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]}
   :ring {:handler sartar-clan-questionnaire.core/app})
