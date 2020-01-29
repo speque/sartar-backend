@@ -16,7 +16,7 @@
               :dev {:dependencies [[metosin/testit "0.4.0"]
                                    [ring/ring-mock "0.4.0"]]}
               :uberjar {:aot :all}
-              :kaocha {:dependencies [[lambdaisland/kaocha "0.0-565"]]}
+              :kaocha {:dependencies [[lambdaisland/kaocha "0.0-581"]]}
             }
   :plugins [[lein-ring "0.12.5"]
             [lein-cljfmt "0.6.0"]
