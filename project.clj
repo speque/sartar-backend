@@ -6,9 +6,11 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/spec.alpha "0.2.176"]
                  [compojure "1.6.1"]
+                 [migratus "1.2.7"]
                  [ring-cors "0.1.13"]
                  [ring-logger "1.0.1"]
                  [ring/ring-json "0.5.0"]
+                 [org.postgresql/postgresql "42.2.9"]
                  [orchestra "2019.02.06-1"]
                  [com.walmartlabs/lacinia "0.35.0"]]
   :target-path "target/%s"
@@ -20,6 +22,8 @@
             }
   :plugins [[lein-ring "0.12.5"]
             [lein-cljfmt "0.6.0"]
-            [lein-ancient "0.6.15"]]
+            [lein-ancient "0.6.15"]
+            [migratus-lein "0.7.3"]]
   :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]}
-  :ring {:handler sartar-clan-questionnaire.core/app})
+  :ring {:init sartar-clan-questionnaire.core/init
+         :handler sartar-clan-questionnaire.core/app})

@@ -8,12 +8,14 @@
             [com.walmartlabs.lacinia.schema :as schema]
             [compojure.core :refer [GET POST] :as c]
             [compojure.route :as route]
+            [migratus.core :as migratus]
             [orchestra.spec.test :as ost]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
             [ring.middleware.cors :refer [wrap-cors]]
             [ring.logger :as logger]
             [ring.util.response :refer [response]]
             [sartar-clan-questionnaire.questions :refer [questions filtered-questions]]
+            [sartar-clan-questionnaire.migrations :as migrations]
             [sartar-clan-questionnaire.resolver :refer [resolve-questionnaire]]))
 
 (defn- dashes-in-kws->_
@@ -61,5 +63,9 @@
               :access-control-allow-methods [:options :post :get]
               :access-control-allow-headers ["Content-Type"])
    logger/wrap-with-logger))
+
+(defn init []
+  (migratus/init migrations/config)
+  (migratus/migrate migrations/config))
 
 (ost/instrument)
