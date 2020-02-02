@@ -1,9 +1,6 @@
-(ns sartar-clan-questionnaire.migrations)
+(ns sartar-clan-questionnaire.migrations
+  (:require [sartar-clan-questionnaire.config :refer [config]]))
 
-(def config {:store         :database
-             :migration-dir "migrations"
-             :db            {:classname   "org.postgresql.Driver"
-                             :subprotocol "postgresql"
-                             :subname     "//localhost/sartar"
-                             :user        "dbadmin"
-                             :password    "ruuttipassu"}})
+(def migrations-config {:store         :database
+                        :migration-dir "migrations"
+                        :db            (:db config)})

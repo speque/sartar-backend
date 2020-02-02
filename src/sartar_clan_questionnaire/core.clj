@@ -1,7 +1,9 @@
 (ns sartar-clan-questionnaire.core
-  (:require [clojure.edn :as edn]
+  (:require [cheshire.core :as json]
+            [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.string :as s]
+            [clojure.tools.logging :as log]
             [clojure.walk :refer [postwalk]]
             [com.walmartlabs.lacinia :refer [execute]]
             [com.walmartlabs.lacinia.util :refer [attach-resolvers]]
@@ -10,12 +12,13 @@
             [compojure.route :as route]
             [migratus.core :as migratus]
             [orchestra.spec.test :as ost]
+            [postgre-types.json :refer [add-jsonb-type]]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
             [ring.middleware.cors :refer [wrap-cors]]
             [ring.logger :as logger]
             [ring.util.response :refer [response]]
             [sartar-clan-questionnaire.questions :refer [questions filtered-questions]]
-            [sartar-clan-questionnaire.migrations :as migrations]
+            [sartar-clan-questionnaire.migrations :refer [migrations-config]]
             [sartar-clan-questionnaire.resolver :refer [resolve-questionnaire]]))
 
 (defn- dashes-in-kws->_
@@ -65,7 +68,13 @@
    logger/wrap-with-logger))
 
 (defn init []
-  (migratus/init migrations/config)
-  (migratus/migrate migrations/config))
+  (log/info "Initializing application")
+  (add-jsonb-type json/generate-string json/parse-string)
+  (migratus/init migrations-config)
+  (migratus/migrate migrations-config))
+
+(defn destroy []
+  (log/info "Destroying application"))
+
 
 (ost/instrument)

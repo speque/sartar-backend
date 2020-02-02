@@ -12,6 +12,7 @@
                  [ring/ring-json "0.5.0"]
                  [org.postgresql/postgresql "42.2.9"]
                  [orchestra "2019.02.06-1"]
+                 [postgre-types "0.0.4"]
                  [com.walmartlabs/lacinia "0.35.0"]]
   :target-path "target/%s"
   :profiles {
@@ -26,4 +27,5 @@
             [migratus-lein "0.7.3"]]
   :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]}
   :ring {:init sartar-clan-questionnaire.core/init
+         :destroy sartar-clan-questionnaire.core/destroy
          :handler sartar-clan-questionnaire.core/app})
