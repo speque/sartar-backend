@@ -22,7 +22,7 @@
               :kaocha {:dependencies [[lambdaisland/kaocha "0.0-581"]]}
             }
   :plugins [[lein-ring "0.12.5"]
-            [lein-cljfmt "0.6.0"]
+            [lein-cljfmt "0.6.6"]
             [lein-ancient "0.6.15"]
             [migratus-lein "0.7.3"]]
   :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]}
